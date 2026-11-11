@@ -189,3 +189,62 @@ git pull
 
 ![Tirage](images/pull.png)
 
+## GitHub
+
+Comme indiqué en introduction, GitHub fluidifie la collaboration dans un même dépôt Git.
+
+Le problème qu'on a eu précédemment n'arrive pas avec GitHub car GitHub n'a pas de "copie locale", il accepte facilement tout ce qu'on veut pousser.
+
+### Création d'un dépôt
+
+Il suffit d'aller dans son compte personnel ou bien dans l'organisation destinée à être propriétaire du dépôt, d'aller dans "Repositories", et de clicker "New". Après quelques renseignements, le dépôt est créé et GitHub indique comment l'utiliser.
+
+![Nouveau dépôt GitHub](images/gh-new-repository.png)
+
+### Liaison de dépôt
+
+```shell
+git remote add origin git@github.com:arnodb/git-demo.git
+git push -u origin main
+```
+
+Le dépôt GitHub contient maintenant toute la branche principale, mais pas la branche 1. Cependant certains commits de la branche 1 apparaissent car ils font également partie de la branche principale.
+
+Pour pousser les étiquettes:
+
+```shell
+git push --tags
+```
+
+Pour pousser la branche 1:
+
+```shell
+git push -u origin branche-1
+```
+
+### Collaboration
+
+Préparation:
+
+```shell
+# Supprimer l'origine dans le clone créé précédemment
+git remote remove origin
+git remote add origin git@github.com:arnodb/git-demo.git
+```
+
+À partir de maintenant, les 2 dépôts locaux sont configurés de la même façon et agissent comme des clones du dépôt GitHub, et la collaboration passe par GitHub:
+
+* créer un commit dans le premier dépôt local
+* pousser dans GitHub
+* tirer dans le second dépôt local
+
+### Pull Request
+
+Pour une collaboration poussée, on souhaite faire revoir les modifications apportée d'un côté par un collaborateur:
+
+* créer une branche avec un commit dans le premier dépôt
+* pousser la branche dans GitHub
+* ouvrir une "pull request"
+* approuver, fusionner
+* tirer dans le second dépôt
+
