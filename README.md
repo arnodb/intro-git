@@ -123,3 +123,17 @@ git merge --no-ff branche-1
 * la branche principale a reçu les modifications apportées par la branche 1
 * sans `--no-ff`, il n'y aurait pas eu de "commit de fusion" et seule une ligne droite apparaîtrait dans le graphe (et ça serait beaucoup moins drôle)
 * le commit de fusion a 2 parents
+
+### Étiquette (Tag)
+
+Pour pouvoir accéder plus rapidement à une version sans se rappeler des identifiants de commits (qui sont quasi aléatoires), il est possible de poser une étiquette sur un commmit:
+
+```shell
+git tag ch-3
+git tag ch-1 064d98de6b0b77addc78fbe98e7a9e29eed80f38
+```
+
+![Tags](images/tags.png)
+
+* `ch-3` est placé sur la "tête" de la branche principale (la branche courante)
+* `ch-1` est placé sur un commit identifié comme intéressant
