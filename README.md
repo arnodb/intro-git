@@ -179,3 +179,13 @@ Une fois poussés les changements, l'origine y a accès:
 * les commits sont littéralement identiques, y compris leurs identifiants
 * la copie locale est mise à jour
 
+### Tirage
+
+On peut ajouter une modification à l'origine et la "tirer" dans le clone:
+
+```shell
+git pull
+```
+
+![Tirage](images/pull.png)
+
