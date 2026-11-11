@@ -14,7 +14,7 @@ GitHub...
 * racheté par Microsoft après avoir été autonome avant
 * fournit "GitHub Desktop"... sauf sous Linux :-/
 
-## Git
+## Git en local
 
 On parle de "Dépôt" Git. Un dépôt Git est principalement composé:
 
@@ -137,3 +137,45 @@ git tag ch-1 064d98de6b0b77addc78fbe98e7a9e29eed80f38
 
 * `ch-3` est placé sur la "tête" de la branche principale (la branche courante)
 * `ch-1` est placé sur un commit identifié comme intéressant
+
+## Git en distribué
+
+### Clone
+
+Il est possible d'avoir une seconde copie locale, totalement indépendante de la première, tout en ayant quand même un lien entre les deux:
+
+```shell
+# Dans un autre terminal
+git clone git-demo git-demo-2
+```
+
+* `git-demo-2` contient tout ce qui se trouve dans `git-demo`
+* il a son propre `.git`, ce qui le rend totalement indépendant
+* il possède un lien vers le dépôt d'origine, il apparaît dans `.git/config`
+
+### Commit dans le clone
+
+On ajoute un commit dans le clone:
+
+![Commit dans clone](images/clone-commit.png)
+
+* le commit est dans la branche principale
+* les branches principales ont divergé
+
+### Poussée
+
+Pour que l'origine puisse profiter de ces ajouts, on pousse la branche principale vers l'origine (dont le clone connaît l'emplacement):
+
+```shell
+git push
+```
+
+Ceci ne fonctionne pas aussi facilement car Git détecte que l'origine est en train de travailler dans la branche principale. Pour contourner cela temporairement, il suffit de placer l'origine dans une autre branche.
+
+Une fois poussés les changements, l'origine y a accès:
+
+![Poussée](images/push.png)
+
+* les commits sont littéralement identiques, y compris leurs identifiants
+* la copie locale est mise à jour
+
